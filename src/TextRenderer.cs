@@ -14,8 +14,8 @@ namespace MgsFontGenDX
         private const int ColumnCount = 64;
         private const int NormalCellWidth = 48;
         private const int NormalCellHeight = 48;
-        private const int OutlineCellWidth = 57;
-        private const int OutlineCellHeight = 57;
+        private const int OutlineCellWidth = 48;
+        private const int OutlineCellHeight = 48;
         private const float Dpi = 96.0f;
         private const float GameWidthMultiplier = 1.5f;
 

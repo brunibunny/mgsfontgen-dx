@@ -8,9 +8,12 @@ namespace MgsFontGenDX
 {
     public static class Program
     {
-        private const int DefaultFontSize = 38;
+        //private const int DefaultFontSize = 35; //Noto Sans CJK JP
+        private const int DefaultFontSize = 36; //Ubuntu
         private const int DefaultBaselineOriginX = 1;
-        private const int DefaultBaselineOriginY = -7;
+        //private const int DefaultBaselineOriginY = -4; //Noto Sans CJK JP
+        private const int DefaultBaselineOriginY = 2; //Ubuntu
+
 
         private const string OutputName = "FONT";
         private const string OutlineName = "font-outline";
@@ -55,8 +58,8 @@ namespace MgsFontGenDX
             var charset = File.ReadAllText(arguments.CharsetFileName);
             var compoundCharTable = ReadCompoundCharacterTable(arguments.CompoundCharTableFileName);
 
-            const int batchSize_outline = 4544;//5440;
-            const int batchSize_font = 5440;
+            const int batchSize_outline = 8000;//5440;
+            const int batchSize_font = 8000;
             using (var textRenderer = new TextRenderer())
             using (var widthTableFile = File.Create("widths.bin"))
             using (var widthWriter = new BinaryWriter(widthTableFile))
@@ -78,7 +81,7 @@ namespace MgsFontGenDX
 
                         byte[] _;
                         var outline = textRenderer.GenerateBitmapFont(batch_outline, compoundCharTable, arguments.ImageFormat, out _,
-                            true, arguments.FontFamily, arguments.FontSize, arguments.BaselineOriginX + 4, arguments.BaselineOriginY + 4);
+                            true, arguments.FontFamily, arguments.FontSize, arguments.BaselineOriginX + 4, arguments.BaselineOriginY);
 
                         font.CopyTo(outputFile);
                         font.Dispose();
